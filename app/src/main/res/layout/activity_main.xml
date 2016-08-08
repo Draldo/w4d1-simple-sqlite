@@ -10,6 +10,18 @@
     android:orientation="vertical"
     tools:context="com.example.admin.simplesqlite.MainActivity">
 
+    <EditText
+        android:id="@+id/name_et"
+        android:hint="Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/age_et"
+        android:hint="Age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <Button
         android:onClick="insertDB"
         android:text="Insert Info"
@@ -17,8 +29,14 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:onClick="loadDB"
+        android:onClick="loadRaw"
         android:text="Load info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:onClick="loadDB"
+        android:text="Load info without raw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>
