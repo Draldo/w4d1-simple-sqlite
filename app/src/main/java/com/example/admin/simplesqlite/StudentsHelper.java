@@ -12,12 +12,12 @@ public class StudentsHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "students.db";
     private static final int DATABASE_VERSION = 1;
     public static final String TABLE_USERS = "students";
-    public static final String KEY_USER_ID = "id";
+    public static final String KEY_USER_ID = "_id";
     public static final String KEY_USER_NAME = "userName";
     public static final String KEY_AGE = "age";
 
 
-    public StudentsHelper(Context context){
+    public StudentsHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,16 +48,18 @@ public class MainActivity extends AppCompatActivity {
 
         Cursor cursor = db.rawQuery("SELECT * FROM " + studentsHelper.TABLE_USERS, null);
 
+        loadList(cursor);
+
         cursor.moveToFirst();
 
-        do{
+        do {
             int id = cursor.getInt(cursor.getColumnIndex(studentsHelper.KEY_USER_ID));
             String name = cursor.getString(cursor.getColumnIndex(studentsHelper.KEY_USER_NAME));
             String age = cursor.getString(cursor.getColumnIndex(studentsHelper.KEY_AGE));
 
             Log.d(TAG, "loadDB: " + id + " " + name + " " + age);
 
-        }while(cursor.moveToNext());
+        } while (cursor.moveToNext());
 
     }
 
@@ -72,16 +75,25 @@ public class MainActivity extends AppCompatActivity {
                 null,
                 null);
 
+        loadList(cursor);
+
         cursor.moveToFirst();
 
-        do{
+        do {
             int id = cursor.getInt(cursor.getColumnIndex(studentsHelper.KEY_USER_ID));
             String name = cursor.getString(cursor.getColumnIndex(studentsHelper.KEY_USER_NAME));
             String age = cursor.getString(cursor.getColumnIndex(studentsHelper.KEY_AGE));
 
             Log.d(TAG, "loadDB: " + id + " " + name + " " + age);
 
-        }while(cursor.moveToNext());
+        } while (cursor.moveToNext());
 
+    }
+
+    public void loadList(Cursor dbcursor) {
+        ListView list = (ListView) findViewById(R.id.main_listview);
+        CustomAdapter adapter = new CustomAdapter(this, dbcursor, 0);
+
+        list.setAdapter(adapter);
     }
 }
